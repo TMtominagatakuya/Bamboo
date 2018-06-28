@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common_header(~{::title})">
+	<!-- <meta charset="utf-8"> -->
+	<title>問題新規作成</title>
+</head>
+
+<body>
+	<!-- メインコンテンツ開始 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- ヘッダー メニューバー開始 -->
+			<div th:replace="common/headandmenu :: headandmenu"></div>
+			<!-- メニューバー終了 -->
+
+			<!-- コンテンツ開始 -->
+			<div class="col-sm-10 ml-auto">
+				<!-- 見出し -->
+				<h3 class="test-title cl-test-title">問題新規作成</h3>
+
+				<div class="mx-2 mb-3 pt-1 preview-page">
+					<!-- フォーム -->
+					<form class="mt-3 mb-0 px-5" th:action="@{/test/addtest}" th:object="${test}" method="post">
+						<ul>
+							<li th:each="error : ${#fields.detailedErrors()}" class="err" th:text="${error.message}"></li>
+						</ul>
+						<!-- テスト名 -->
+						<div class=" form-group row pb-3 pr-3 problem-border">
+							<label class="col-sm-2 col-form-label" for="test.name">タイトル：</label>
+							<input class="form-control col-sm-10" type="text" name="test.name" th:field="*{name}" />
+						</div>
+
+						<!-- カテゴリ選択 -->
+						<div class=" form-group row pb-3 problem-border">
+							<label class="col-sm-2 col-form-label" for="category_id">カテゴリ</label>
+							<select class="form-control col-sm-4 category_id" th:field="${test.category.id}">
+								<option th:value=1>Java</option>
+								<option th:value=2>SQL</option>
+								<option th:value=3>Javascript</option>
+								<option th:value=4>その他</option>
+							</select>
+						</div>
+
+						<!-- 問題 -->
+						<div class="problem" th:each="problem, i : ${test.problemList}">
+							<!-- 問題文 -->
+							<div class=" form-group row pb-3 pr-3">
+								<label class="col-sm-2 col-form-label" for="problem.question">問題文：</label>
+								<textarea class="form-control col-sm-10" name="problem.question" rows="5" th:field="${test.problemList[__${i.index}__].question}"></textarea>
+							<p th:text="${questionErr}"></p>
+							</div>
+
+							<!-- 問題形式選択 -->
+							<div class=" form-group row pb-3">
+								<label class="col-sm-2 col-form-label" for="problemType">問題形式</label>
+								<select class="form-control col-sm-4 typeId" th:field="${test.problemList[__${i.index}__].typeId}">
+									<option th:value=0>選択式</option>
+									<option th:value=1>記述式</option>
+								</select>
+							</div>
+
+							<!-- 選択問題 -->
+							<div class="choiceSpace">
+								<div class="form-group form-inline row pb-3" th:each="choice, j : ${test.problemList[__${i.index}__].choiceList}">
+									<div class="col-sm-2 form-check">
+										<input type="hidden" name="_is_correct" value=0 />
+										<input class="form-check-input" type="checkbox" name="is_correct" value=1 th:checked="${test.problemList[__${i.index}__].choiceList[__${j.index}__].is_correct}" />
+										<label class="col-form-label pb-3" for="choice">選択肢：</label>
+									</div>
+
+									<input class="form-control col-sm-9" type="text" name="choice" th:field="${test.problemList[__${i.index}__].choiceList[__${j.index}__].content}" />
+									<button class="btn btn-danger ml-2 float-right" type="submit" name="removeChoice" th:value="${i.index}+','+${j.index}">X</button>
+								<p th:text="${choiceValErr}"></p>
+								</div>
+								<!-- 選択肢追加ボタン -->
+								<div class="trans form-group row pb-3">
+									<div class="offset-sm-2">
+										<button class="btn btn-info mx-1" type="submit" name="addChoice" th:value="${i.index}">選択肢追加</button>
+									</div>
+								</div>
+							</div>
+
+							<!-- 記述問題解答例 -->
+							<div class="descriptionSpace" style="display:none;">
+								<div class=" form-group row pb-3 mb-4">
+									<label class="col-sm-2 col-form-label">記述解答：</label>
+									<textarea class="form-control col-sm-10" name="description" rows="5" th:field="${test.problemList[__${i.index}__].description.description_answer}"></textarea>
+								<p th:text="${descriptionErr}"></p>
+								</div>
+							</div>
+							<div class=" form-group row py-3 problem-top">
+								<div class="col-sm-4">
+									<button class="btn btn-info mx-1" type="submit" name="addProblem">問題追加</button>
+									<button class="btn btn-danger mx-1" type="submit" name="removeProblem" th:value="${i.index}">問題削除</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- 確認画面ボタン -->
+						<div class=" form-group row pb-4">
+							<div class="offset-sm-10 col-sm-2">
+								<button class="btn btn-success mx-0 float-right" type="submit" name="TestConfirm">確認画面</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<!-- コンテンツ終了 -->
+		</div>	<!-- row -->
+
+		<!-- フッター -->
+		<div th:replace="common/footer :: common_footer"></div>
+		<!-- フッター終了 -->
+	</div>
+	<!-- メインコンテンツ終了 -->
+	<script src="/js/addtest.js" th:src="@{/js/addtest.js}"></script>
+</body>
+</html>

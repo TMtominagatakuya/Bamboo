@@ -1,0 +1,195 @@
+/* ログイン画面見出し */
+h1 {
+  text-align: center;
+}
+
+h1 span{
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #286bcc;
+  color: #286bcc
+}
+
+h1 span::before,
+h1 span::after {
+  position: absolute;
+  top: 100%;
+  left:50%;
+  transform:translateX(-50%);
+  content: '';
+  border: 10px solid transparent;
+}
+
+h1 span::before {
+  border-top: 10px solid #286bcc;
+}
+
+h1 span::after {
+  margin-top: -1px;
+  border-top: 10px solid #b6cff3;
+}
+
+/* 一覧見出し */
+.page-title {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+.page-title::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #959e9b;
+}
+
+/* テスト見出し */
+.test-title {
+  position: relative;
+  padding: 15px 15px 15px 20px;
+  margin-bottom: 30px;
+}
+
+.test-title::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #959e9b;
+}
+
+/* カテゴリーバー */
+
+.category-bar li {
+  padding: 5px 5px;
+  color: #666;
+}
+
+.category-bar a {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 10px;
+  width: 30px;
+  color: #666;
+  transition: 0.3s;
+}
+
+.category-bar a:hover {
+  padding: 5px 5px;
+  border-radius: 10px;
+  background-color: #2f5893;
+  color: #eee;
+}
+
+/* テーブル等の横幅任意指定 */
+.t-column-20 {
+  width: 20%;
+}
+
+.t-column-15 {
+  width: 15%;
+}
+
+.t-column-10 {
+  width: 10%;
+}
+
+.t-column-5-5 {
+  width: 5.5%;
+}
+
+.t-column-5 {
+  width: 5%;
+}
+
+.t-column-auto {
+  width: auto;
+}
+
+.t-column-margin {
+  width: 3%;
+}
+
+.t-border-bottom {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* 画面レイアウト */
+.preview-page {
+  background-color: #f7f9fd;
+}
+
+.problem-top {
+  border-top: dotted 2px #7096cc;
+}
+
+/* ボーダー */
+.problem-border {
+  border-bottom: dotted 2px #7096cc;
+}
+
+.danger-border {
+  border-bottom: double 3px #dc3545;
+}
+
+/* リストスタイル */
+
+.error-message li {
+  list-style-type: none;
+}
+
+/* フォーム */
+input[type="text"], select, option,textarea {
+  outline: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+input[type="text"]:focus, select:focus, option:focus,textarea:focus {
+  box-shadow: 0 0 7px #286bcc;
+  border: 1px solid #286bcc;
+}
+
+select{
+  outline:none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  background: none transparent;
+  vertical-align: middle;
+  color: inherit;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+}
+select option{
+  background-color: #fff;
+  color: #333;
+}
+select::-ms-expand {
+  display: none;
+}
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #828c9a;
+}
+
+input[type="submit"], button[type="submit"] {
+  outline: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+input[type="submit"]:focus, button[type="submit"]:focus {
+  box-shadow: 0 0 7px #286bcc;
+  border: 1px solid #286bcc;
+}
+
+/* 記述問題解答ディスプレイ */
+.description-display {
+  display: none;
+}

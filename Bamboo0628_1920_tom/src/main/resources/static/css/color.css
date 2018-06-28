@@ -1,0 +1,31 @@
+/* メニューバー */
+.cl-menubar {
+  color: #eee;
+  background-color: #286bcc;
+}
+
+/* 見出し */
+.cl-page-title {
+  color: #eee;
+  background: #2f5893;
+}
+
+.cl-test-title {
+  color: #eee;
+  background: #7096cc;
+}
+
+.cl-delete-title {
+  color: #eee;
+  background: #cb4042;
+}
+
+/* カテゴリーバー */
+.category-bar {
+  background-color: #f7f9fd;
+}
+
+/* フッター */
+.cl-footer {
+  background: #286bcc;
+}

@@ -1,0 +1,51 @@
+/* 一覧見出し */
+.page-title {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+.page-title::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #959e9b;
+}
+
+/* テスト見出し */
+.test-title {
+  position: relative;
+  padding: 15px 15px 15px 20px;
+  margin-bottom: 30px;
+}
+
+.test-title::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #959e9b;
+}
+
+/* テーブル */
+.t-column-category {
+  width: 15%;
+}
+
+.t-column-key {
+  width: 15%;
+}
+
+.t-column-title{
+  width: auto;
+}
+
+/* プレビュー画面 */
+.preview-page {
+  background-color: #e6eefb;
+}

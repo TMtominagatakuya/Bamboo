@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common_header(~{::title})">
+  <!-- <meta charset="utf-8"> -->
+  <title>入社前課題テスト</title>
+</head>
+
+<body>
+  <!-- メインコンテンツ開始 -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- ヘッダー メニューバー開始 -->
+      <div th:replace="common/headandmenu :: headandmenu"></div>
+      <!-- メニューバー終了 -->
+
+      <!-- コンテンツ開始 -->
+      <div class="col-sm-10 ml-auto">
+        <!-- 見出し -->
+        <h3 class="test-title cl-test-title" th:text="'テスト名:'+${article.test.name}"></h3>
+
+        <div class="mx-2 mb-3 pt-1 px-4 preview-page">
+          <!-- 問題 -->
+          <div class="problem-border" th:each="problem : ${article.test.problemList}">
+            <!-- 問題文 -->
+            <div class="mb-3">
+              <table class="table table-borderless">
+                <td class="align-text-bottom t-column-10"><span class="h5" th:text="'問題:'+${problem.id}"></span></td>
+                <td class="align-middle t-column-auto pl-0"><span class="h5" th:text="${problem.question}"></span></td>
+              </table>
+            </div>
+
+            <!-- 記述問題ユーザ解答 -->
+            <div class="pr-5" th:if="${problem.typeId==1}">
+              <table class="ml-4 table table-borderless">
+                <tr>
+                  <td class="align-baseline t-column-15"><span th:text="'ユーザ解答:'+${problem.description.id}"></span></td>
+                  <td class="align-middle t-column-auto"><span th:text="${problem.description.description_answer}"></span></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 記述問題解答 -->
+            <div class="pr-5" th:if="${problem.typeId==1}">
+              <table class="ml-4 table table-borderless">
+                <tr>
+                  <td class="align-baseline t-column-15"><span th:text="'ユーザ解答:'+${problem.description.id}"></span></td>
+                  <td class="align-middle t-column-auto"><span th:text="${problem.description.description_answer}"></span></td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 選択問題　ユーザ解答 -->
+            <div th:if="${problem.typeId==0}">
+              <div class="form-group row pb-3">
+                <p class="col-sm-1 pl-5">ユーザ解答:</p>
+              </div>
+              <div class="form-group form-inline row pb-3" th:each="choice : ${problem.choiceList}">
+                <div class="col-sm-1 form-check pl-5">
+                  <input type="checkbox" name="user_answer.choice1"></input>
+                  <span class="pl-2" th:text="${choice.id}"></span>
+                </div>
+                <span class="col-sm-11 text-left" th:text="${choice.content}"></span>
+              </div>
+            </div>
+
+            <!-- 選択問題解答 -->
+            <div class="pr-5" th:unless="${problem.typeId}">
+              <div th:each="choice : ${problem.choiceList}">
+                <table class="ml-4 table table-borderless">
+                  <tr class="t-border-bottom">
+                    <td class="align-baseline t-column-15"><span th:text="'選択肢'+${choice.id}"></span></td>
+                    <td class="align-middle t-column-auto"><span th:text="${choice.content}"></span></td>
+                    <td class="align-middle t-column-15"><span th:text="${choice.is_correct}"></span></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- コンテンツ終了 -->
+    </div>	<!-- row -->
+
+    <!-- フッター -->
+    <div th:replace="common/footer :: common_footer"></div>
+    <!-- フッター終了 -->
+  </div>
+  <!-- メインコンテンツ終了 -->
+</body>
+</html>
