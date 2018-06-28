@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common_header(~{::title})">
+	<!-- <meta charset="utf-8"> -->
+	<title>ユーザ編集</title>
+</head>
+
+<body>
+	<!-- メインコンテンツ開始 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- ヘッダー メニューバー開始 -->
+			<div th:replace="common/headandmenu :: headandmenu"></div>
+			<!-- メニューバー終了 -->
+
+			<!-- コンテンツ開始 -->
+			<div class="col-sm-10 ml-auto">
+				<!-- 見出し -->
+				<h3 class="test-title cl-test-title">ユーザ編集</h3>
+
+				<div class="mx-2 mb-3 pt-1 preview-page">
+					<!-- フォーム -->
+          <!-- <form class="mt-3 mb-0 px-5" th:action="@{/UsersEdit}" th:object="${user}" method="post"> -->
+					<form class="mt-3 mb-0 px-5" action="#" method="post">
+						<!-- 名前 -->
+						<div class=" form-group row pb-3 pr-3 problem-border">
+							<label class="col-sm-2 col-form-label">名前</label>
+							<input class="form-control col-sm-4" type="text" required>
+              <!-- <input class="form-control col-sm-4" type="text" name="user.name" th:field="*{name}" required> -->
+						</div>
+
+            <!-- ユーザ名 -->
+						<div class=" form-group row pb-3 pr-3 problem-border">
+							<label class="col-sm-2 col-form-label">ユーザ名</label>
+							<input class="form-control col-sm-4" type="text" required>
+              <!-- <input class="form-control col-sm-4" type="text" name="user.acountName" th:field="*{acountName}" required> -->
+						</div>
+
+            <!-- パスワード -->
+						<div class=" form-group row pb-3 pr-3 problem-border">
+							<label class="col-sm-2 col-form-label">パスワード</label>
+							<input class="form-control col-sm-4" type="password" required>
+              <!-- <input class="form-control col-sm-4" type="password" name="user.password" th:field="*{password}" required> -->
+						</div>
+
+            <!-- メールアドレス -->
+						<div class=" form-group row pb-3 pr-3 problem-border">
+							<label class="col-sm-2 col-form-label">メールアドレス</label>
+							<input class="form-control col-sm-7" type="text" required>
+              <!-- <input class="form-control col-sm-7" type="text" name="user.mailAddress" th:field="*{mailAddress}" required> -->
+						</div>
+
+						<!-- 確認画面ボタン -->
+						<div class=" form-group row pb-4">
+							<div class="offset-sm-10 col-sm-2">
+								<button class="btn btn-success mx-0 float-right" type="submit">登録</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<!-- コンテンツ終了 -->
+		</div>	<!-- row -->
+
+		<!-- フッター -->
+		<div th:replace="common/footer :: common_footer"></div>
+		<!-- フッター終了 -->
+	</div>
+	<!-- メインコンテンツ終了 -->
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!-- <head th:replace="common/header :: common_header(~{::title},~{::link})"> -->
+<head th:replace="common/header :: common_header(~{::title})">
+	<!-- <meta charset="utf-8"> -->
+	<title>問題一覧</title>
+</head>
+
+<body>
+	<!-- メインコンテンツ開始 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- ヘッダー メニューバー開始 -->
+			<div th:replace="common/headandmenu :: headandmenu"></div>
+			<!-- メニューバー終了 -->
+
+      <!-- コンテンツ開始 -->
+      <div class="col-sm-10 ml-auto">
+        <!-- 見出し -->
+        
+		<form action="#" th:action="@{/TestConfirm}" th:object="${test}" method="post">
+			<h3 class="test-title cl-test-title" th:text="'テスト名:'+${test.name}"></h3><br>
+
+        	<div class="px-4 preview-page">
+        		<span>カテゴリID:</span><span th:text="${test.category	.id}"></span><br>
+			<span th:text="${test.category.name}"></span><br>
+          		<div th:each="problem,i : ${test.problemList}">
+          			<span th:text="'問題'+${i.index+1}"></span><br>
+            		<span>問題文:</span> <span th:field="${problem.question}"></span></br>
+            		<div th:if="${problem.typeId}">
+              			<span>記述解答：</span> <span th:text="${problem.description.description_answer}"></span>
+            		</div>
+            		<div th:unless="${problem.typeId}">
+              			<div th:each="choice : ${problem.choiceList}">
+                			<span>選択肢</span> <span th:text="${choice.content}"></span> 
+                			<span th:text="${choice.is_correct}"></span></br>
+              			</div>
+            		</div></br>
+        		</div>
+      		</div>
+      		<!-- test modelの保持および送信のための隠しdom -->
+      		<div class="hidden_fields">
+      			<input type="hidden" th:field="*{name}" />
+      			<input type="hidden" th:field="*{category.id}" />
+      			<input type="hidden" th:field="*{category.name}" />
+      			<div class="problem" th:each="problem, i : ${test.problemList}">
+					<input type="hidden" th:field="${test.problemList[__${i.index}__].question}" />
+					<input type="hidden" th:field="*{problemList[__${i.index}__].typeId}" />
+						<div th:each="choice, j : ${test.problemList[__${i.index}__].choiceList}">
+							<input type="hidden" th:field="${test.problemList[__${i.index}__].choiceList[__${j.index}__].is_correct}" />
+							<input type="hidden" th:field="${test.problemList[__${i.index}__].choiceList[__${j.index}__].content}" />
+						</div>
+						<div hidden="hidden" class="descriptionSpace">
+						<input type="hidden" th:field="${test.problemList[__${i.index}__].description.description_answer}" />
+						</div>
+      			</div>
+      		</div>
+      		<!-- test modelの保持および送信のための隠しdom -->
+      		<input type="submit" name="saveTest" value="作成・更新"></input>
+      </form>
+    </div>
+    <!-- コンテンツ終了 -->
+  </div>	<!-- row -->
+
+  <!-- フッター -->
+  <div th:replace="common/footer :: common_footer"></div>
+  <!-- フッター終了 -->
+</div>
+<!-- メインコンテンツ終了 -->
+</body>
+</html>

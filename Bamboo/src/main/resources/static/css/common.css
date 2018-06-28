@@ -1,0 +1,123 @@
+body {
+  color: #333;
+}
+
+/* ヘッダーpadding */
+.container-fluid {
+  padding-top: 70px;
+}
+
+/* ログイン画面ヘッダー　ページ */
+.login-header {
+  background-color: #b6cff3;
+}
+
+.login-page {
+  background-color: #e6eefb;
+}
+
+.login-form {
+  border-radius: 10px;
+  background-color: #f7f9fd;
+}
+
+/* サイドバー */
+.sidebar-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #286bcc;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* ナビゲーションバーの背面 */
+  padding: 48px 0 0; /* ナビゲーションバーの高さ */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* ビューポートがコンテンツより短い場合、スクロール可能なコンテンツ */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/* サイドバーボタン */
+.sidebar-btn{
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  text-decoration: none;
+  color: #eee;
+  background-color: #286bcc;
+  transition: .4s;
+}
+
+.sidebar-btn:hover {
+  background-color: #286bcc;
+  color: #eee;
+}
+
+a.sidebar-subbtn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  color: #eee;
+  background-color: #286bcc;
+  transition: .4s;
+}
+
+a.sidebar-subbtn:hover {
+  background-color: #eee;
+  color: #286bcc;
+}
+
+a.active-sidebar-subbtn {
+  background-color: #eee;
+  color: #286bcc;
+}
+
+.headline-border {
+  border-top: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+/* フッター */
+.footer-index {
+  z-index: 80;
+}

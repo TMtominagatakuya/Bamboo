@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!-- <head th:replace="common/header :: common_header(~{::title},~{::link})"> -->
+<head th:replace="common/header :: common_header(~{::title})">
+	<!-- <meta charset="utf-8"> -->
+	<title>問題一覧</title>
+</head>
+
+<body>
+	<!-- メインコンテンツ開始 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- ヘッダー メニューバー開始 -->
+			<div th:replace="common/headandmenu :: headandmenu"></div>
+			<!-- メニューバー終了 -->
+
+				<!-- コンテンツ開始 -->
+			<div class="col-sm-10 ml-auto">
+				<!-- 見出し -->
+				<h3 class="page-title cl-page-title">問題一覧</h3>
+
+				<div class="px-4">
+					<!-- ページネーション -->
+<!--                 <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                            <li class="page-item"><a class="page-link"
+                            th:href="${0 < value.getNumber()} ? 'page'+${value.getNumber()}"
+                            aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Prev</span>
+                        </a></li>
+                        <div th:each="i : ${#numbers.sequence(1, value.getTotalPages())}">
+                            <li class="page-item"><a class="page-link" th:text="${i}"
+                                th:href="'page'+${i}"></a></li>
+                        </div>
+                        <li class="page-item"><a class="page-link"
+                            th:href="${value.getTotalPages()} > ${value.getNumber()+1} ? 'page'+${value.getNumber()+2}"
+                            aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+                                class="sr-only">Next</span>
+                        </a></li>
+                    </ul>
+                </nav> -->
+
+					<!-- 問題一覧テーブル -->
+					<table class="table table-bordered table-striped" border="1">
+						<thead class="thead-dark">
+							<tr>
+								<th class="t-column-category align-middle">カテゴリー</th>
+								<th class="t-column-key align-middle">キー</th>
+								<th class="t-column-title align-middle">タイトル</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="test : ${value}">
+								<td class="align-middle"><p class="align-middle" th:text="${test.category.name}"></p></td>
+								<td class="align-middle"><p class="align-middle" th:text="${test.id}"></p></td>
+								<td class="align-middle"><a th:href="${test.id}" th:text="${test.name}"></a></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<!-- ページネーション -->
+               <!--  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                            <li class="page-item"><a class="page-link"
+                            th:href="${0 < value.getNumber()} ? 'page'+${value.getNumber()}"
+                            aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Prev</span>
+                        </a></li>
+                        <div th:each="i : ${#numbers.sequence(1, value.getTotalPages())}">
+                            <li class="page-item"><a class="page-link" th:text="${i}"
+                                th:href="'page'+${i}"></a></li>
+                        </div>
+                        <li class="page-item"><a class="page-link"
+                            th:href="${value.getTotalPages()} > ${value.getNumber()+1} ? 'page'+${value.getNumber()+2}"
+                            aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+                                class="sr-only">Next</span>
+                        </a></li>
+                    </ul>
+                </nav> -->
+
+					</div>
+				</div>
+				<!-- コンテンツ終了 -->
+		</div>	<!-- row -->
+
+		<!-- フッター -->
+		<div th:replace="common/footer :: common_footer"></div>
+		<!-- フッター終了 -->
+	</div>
+	<!-- メインコンテンツ終了 -->
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>テスト修正</title>
+
+<!-- css -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+<link href="/css/common.css" th:href="@{/css/common.css}"
+	rel="stylesheet">
+<link href="/css/content.css" th:href="@{/css/content.css}"
+	rel="stylesheet">
+<link href="/css/color.css" th:href="@{/css/color.css}" rel="stylesheet">
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+	crossorigin="anonymous"></script>
+<script src="/js/style.js" th:src="@{/js/style.js}"></script>
+</head>
+
+<body>
+	<!-- メインコンテンツ開始 -->
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- ヘッダー開始 -->
+			<div class="col-sm-12">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+					<a class="navbar-brand" href="/">BAMBOO</a>
+					<div class="collapse navbar-collapse justify-content-end"
+						id="navbarNavDropdown">
+						<ul class="navbar-nav">
+							<li class="nav-item"><a class="nav-link" href="#">Backlog</a>
+							</li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#"
+								id="navbarDropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> ユーザ名 </a>
+								<div class="dropdown-menu"
+									aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="#">ログアウト</a>
+								</div></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<!-- ヘッダー終了 -->
+
+			<!-- メニューバー開始 -->
+			<nav class="col-sm-2 d-none d-sm-block sidebar accordion cl-menubar"
+				id="accordionExample">
+				<div class="sidebar-sticky">
+
+					<div class="card cl-menubar">
+						<button id="heading1" class="btn sidebar-btn text-left"
+							type="button" data-toggle="collapse" data-target="#collapse1"
+							aria-expanded="true" aria-controls="collapse1">問題管理</button>
+
+						<div id="collapse1" class="collapse show"
+							aria-labelledby="heading1" data-parent="#accordionExample">
+							<ul class="nav flex-column">
+								<li class="nav-item"><a class="nav-link sidebar-subbtn"
+									href="#"> 問題新規作成 </a></li>
+								<li class="nav-item"><a
+									class="nav-link sidebar-subbtn active" href="/"> 問題一覧 </a></li>
+								<li class="nav-item"><a class="nav-link  sidebar-subbtn"
+									href="#"> 担当者解答一覧 </a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="card cl-menubar">
+						<button id="heading2" class="btn sidebar-btn text-left"
+							type="button" data-toggle="collapse" data-target="#collapse2"
+							aria-expanded="true" aria-controls="collapse2">入社前課題テスト
+						</button>
+
+						<div id="collapse2" class="collapse" aria-labelledby="heading2"
+							data-parent="#accordionExample">
+							<ul class="nav flex-column">
+								<li class="nav-item"><a class="nav-link sidebar-subbtn"
+									href="#"> すべて </a></li>
+								<li class="nav-item"><a class="nav-link sidebar-subbtn"
+									href="#"> Java </a></li>
+								<li class="nav-item"><a class="nav-link sidebar-subbtn"
+									href="#"> SQL </a></li>
+								<li class="nav-item"><a class="nav-link sidebar-subbtn"
+									href="#"> その他 </a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="card cl-menubar">
+						<button id="heading3" class="btn sidebar-btn text-left"
+							type="button" data-toggle="collapse" data-target="#collapse3"
+							aria-expanded="true" aria-controls="collapse3">ユーザ管理</button>
+					</div>
+
+				</div>
+			</nav>
+			<!-- メニューバー終了 -->
+
+			<!-- コンテンツ開始 -->
+			<div class="col-sm-10 ml-auto">
+				<form action="#" th:action="@{/EditTest}" th:object="${test}"
+					method="post">
+					<label for="test.name">テスト名：</label> <input type="text"
+						name="test.name" th:field="*{name}" /><br> <label
+						for="category_id">カテゴリ</label> <select class="category_id"
+						th:field="${test.category.id}">
+						<option th:value=1>Java</option>
+						<option th:value=2>SQL</option>
+						<option th:value=3>Javascript</option>
+						<option th:value=4>その他</option>
+						<br>
+					</select>
+					<div class="problem" th:each="problem, i : ${test.problemList}">
+						<label for="problem.question">問題文：</label> <input type="text"
+							name="problem.question"
+							th:field="${test.problemList[__${i.index}__].question}" />
+						<button type="submit" name="removeProblem" th:value="${i.index}">問題削除</button>
+						<br> <label for="problemType">問題形式</label> <select
+							class="typeId"
+							th:field="${test.problemList[__${i.index}__].typeId}">
+							<option th:value=0>選択式</option>
+							<option th:value=1>記述式</option>
+							<br>
+						</select>
+						<div class="choiceSpace">
+							<div
+								th:each="choice, j : ${test.problemList[__${i.index}__].choiceList}">
+								<input type="hidden" name="_is_correct" value=0 /> <input
+									type="checkbox" name="is_correct" value=1
+									th:checked="${test.problemList[__${i.index}__].choiceList[__${j.index}__].is_correct}" />
+								<label for="choice">選択肢：</label> <input type="text"
+									name="choice"
+									th:field="${test.problemList[__${i.index}__].choiceList[__${j.index}__].content}" />
+								<button type="submit" name="removeChoice"
+									th:value="${i.index}+','+${j.index}">X</button>
+							</div>
+							<button type="submit" name="addChoice" th:value="${i.index}">選択肢追加</button>
+							<br> <br>
+						</div>
+						<div class="descriptionSpace" style="display: none;">
+							<p>
+								解答例
+								<textarea name="description" cols="40" rows="5"
+									th:field="${test.problemList[__${i.index}__].description.description_answer}"></textarea>
+							</p>
+						</div>
+					</div>
+					<button type="submit" name="addProblem">問題追加</button>
+					<br> 
+					<button type="submit" name="TestConfirm">確認画面</button>
+				</form>
+			</div>
+
+			<!-- コンテンツ終了 -->
+		</div>
+		<!-- row -->
+
+		<!-- フッター -->
+		<div class="row">
+			<div class="col-sm-12 text-right text-light cl-footer footer-index">©</div>
+		</div>
+		<!-- フッター終了 -->
+	</div>
+	<!-- メインコンテンツ終了 -->
+	<script>
+		$(document).ready(function() {
+			$(".typeId").change(function() {
+				$(this).parents(".problem").find(".choiceSpace").toggle();
+				$(this).parents(".problem").find(".descriptionSpace").toggle();
+			});
+		});
+	</script>
+</body>
+</html>

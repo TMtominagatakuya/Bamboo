@@ -1,0 +1,97 @@
+/* メニューバー */
+.cl-menubar {
+  color: #eee;
+  background-color: #286bcc;
+}
+
+/* 見出し */
+.cl-page-title {
+  color: #eee;
+  background: #2f5893;
+}
+
+.cl-test-title {
+  color: #eee;
+  background: #7096cc;
+}
+
+.cl-delete-title {
+  color: #eee;
+  background: #cb4042;
+}
+
+/* カテゴリーバー */
+.category-bar {
+  background-color: #f7f9fd;
+}
+
+/* カテゴリー */
+.cl-category-java {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #32a753;
+  color: #eee;
+}
+
+.cl-category-javascript {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #3e82f1;
+  color: #eee;
+}
+
+.cl-category-sql {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #f9bb00;
+  color: #eee;
+}
+
+.cl-category-other {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #ef6457;
+  color: #eee;
+}
+
+/* ステータス */
+.cl-status-unanswered {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #ef6457;
+  color: #eee;
+}
+
+.cl-status-answered {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #3e82f1;
+  color: #eee;
+}
+
+.cl-status-resubmit {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #f9bb00;
+  color: #eee;
+}
+
+.cl-status-done {
+  text-decoration: none;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #3e82f1;
+  color: #eee;
+}
+
+/* フッター */
+.cl-footer {
+  background: #286bcc;
+}
