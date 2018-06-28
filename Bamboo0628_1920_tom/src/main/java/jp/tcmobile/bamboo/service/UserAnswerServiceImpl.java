@@ -41,6 +41,7 @@ public class UserAnswerServiceImpl implements UserAnswerService {
 				System.out.println("選択肢、記述以外の問題の出力");
 			}
 		}	
+		return true;
 	}
 	
 	//ユーザーの解答済みの問題は解けないようにする

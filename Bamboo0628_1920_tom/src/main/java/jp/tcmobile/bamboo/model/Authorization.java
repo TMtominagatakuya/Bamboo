@@ -12,21 +12,21 @@ import lombok.Setter;
 @Setter
 public class Authorization {
 	/*
-	 * ロールの列挙
+	 * 繝ｭ繝ｼ繝ｫ
 	 */
 	public static enum Role {
 		manager, admin, staff
 	}
 
-	/*ロール*/
+	/*隱榊庄*/
 	@Id
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	/*名称*/
+	/*繧｢繧ｫ繧ｦ繝ｳ繝亥錐*/
 	private String name;
 
-	/*ユーザ*/
+	/*繝ｦ繝ｼ繧ｶ繧ｻ繝�繝�*/
 	@ManyToMany(mappedBy = "authorizationSet")
 	private Set<User> userSet; 
 }
