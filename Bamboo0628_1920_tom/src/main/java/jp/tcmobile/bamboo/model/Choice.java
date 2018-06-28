@@ -17,21 +17,21 @@ import lombok.Setter;
 @Entity
 @Table(name = "choices")
 public class Choice {
-	/*驕ｸ謚櫁いID*/
+	/*選択肢ID*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, precision = 11)
 	private Integer id;
-	/*驕ｸ謚櫁い蜀�螳ｹ*/
+	/*選択肢内容*/
 	@Column(name = "content", nullable=false, length = 255)
 	//@NotEmpty
 	private String content;
 
-	/*驕ｸ謚櫁い豁｣隗｣繝輔Λ繧ｰ*/
+	/*正解選択肢*/
 	@Column(name = "is_correct", nullable=false)
 	private byte is_correct;
 
-	/*蝠城｡栗D*/
+	/*問題ID*/
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "problem_id")
 	private Problem problem;

@@ -26,7 +26,7 @@ public class Authorization {
 	/*アカウント名*/
 	private String name;
 
-	/*ユーザセット*/
+	/*ユーザリスト*/
 	@ManyToMany(mappedBy = "authorizationSet")
 	private Set<User> userSet; 
 }

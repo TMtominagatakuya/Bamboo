@@ -1,5 +1,7 @@
 package jp.tcmobile.bamboo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -149,22 +151,41 @@ public class ArticleController {
 			){
 		Article article = articleServiceImpl.getArticleById(article_id);
 		mav.addObject("article", article);
+		UserAnswer userAnswer = new UserAnswer();
+		mav.addObject("userAnswer",userAnswer);
 		mav.setViewName("article/article");
 		return mav;
 	}
 	
 	//ユーザ解答を登録する処理
-	@PostMapping("/article/article")
+//	@PostMapping("/article/article")
+//	public ModelAndView saveUserAnswer(ModelAndView mav,
+//			@AuthenticationPrincipal UserDetail userDetail,
+//			@ModelAttribute("testAnswer") UserAnswer userAnswer,
+//			Article article){
+//		userAnswerServiceImpl.saveUserAnswer(userAnswer);
+//		mav.addObject("userAnswer", userAnswer);
+//		mav.addObject("article", article);
+//		mav.setViewName("article/articleanswer");
+//		return mav;
+//	}
+	
+	@PostMapping("/article/category_id{category_id}/status_id{status_id}/{article_id}")
 	public ModelAndView saveUserAnswer(ModelAndView mav,
 			@AuthenticationPrincipal UserDetail userDetail,
-			@ModelAttribute("testAnswer") UserAnswer userAnswer,
+			UserAnswer userAnswer,
 			Article article){
-		userAnswerServiceImpl.saveUserAnswer(userAnswer);
+		if(userAnswerServiceImpl.isAnswered(article)) {
+			throw new IllegalArgumentException("解答済みです。");//例外処理
+		}
+		userAnswerServiceImpl.saveUserAnswer(userAnswers);
 		mav.addObject("userAnswer", userAnswer);
 		mav.addObject("article", article);
 		mav.setViewName("article/articleanswer");
 		return mav;
 	}
+	
+	
 
 
 }

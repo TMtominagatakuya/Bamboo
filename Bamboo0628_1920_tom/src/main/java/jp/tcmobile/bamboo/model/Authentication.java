@@ -13,7 +13,9 @@ public class Authentication {
 	
 	@Id
 	private String id;
+	
 	private String password;
+	
 	private java.sql.Date validDate;
 	@OneToOne(optional = false)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")

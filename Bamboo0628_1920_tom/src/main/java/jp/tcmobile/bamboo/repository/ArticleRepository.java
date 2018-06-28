@@ -31,5 +31,8 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	
 	public List<Article> findAll();
 	
-	public List<Article> findByUser_id(int user_id);	
+	public List<Article> findByUser_id(int user_id);
+	
+	//ユーザ名
+	public Article findByUser_idAndTest_id(int user_id, int test_id);
 }
